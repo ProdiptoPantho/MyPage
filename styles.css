@@ -68,7 +68,7 @@ a:hover {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #007bff, #4a90e2);
+    background: linear-gradient(135deg, #333, #4a90e2);
     color: #fff;
     text-align: center;
     padding: 5rem 2rem;
@@ -248,8 +248,20 @@ header {
     margin-top: 1.5rem;
 }
 
-/* Responsive Adjustments */
+/* Responsive Adjustments for Mobile View */
 @media (max-width: 768px) {
+    /* Navbar */
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    /* Header */
     .header-title {
         font-size: 2.5rem;
     }
@@ -258,12 +270,78 @@ header {
         font-size: 1rem;
     }
 
-    .about-section, .skills-grid, .projects-grid, .hobbies-grid {
+    /* About Section */
+    .about-section {
         gap: 1rem;
+        text-align: center;
     }
 
+    .about-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Skills, Projects, and Hobbies Sections */
+    .skills-grid, .projects-grid, .hobbies-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .skill-card, .project-card, .hobby-card {
+        padding: 1rem;
+    }
+
+    /* Contact Section */
     .contact-content {
         flex-direction: column;
+    }
+
+    .contact-info, .contact-social {
+        flex: 1 1 100%;
+        padding: 1rem;
+    }
+}
+
+/* Adjustments for smaller screens (mobile devices) */
+@media (max-width: 480px) {
+    /* Navbar */
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+    }
+
+    /* Header */
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* About Section */
+    .about-text {
+        font-size: 1rem;
+    }
+
+    /* Skills, Projects, and Hobbies Sections */
+    .skills-grid, .projects-grid, .hobbies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card, .project-card, .hobby-card {
+        padding: 1rem;
+    }
+
+    /* Contact Section */
+    .social-icon {
+        font-size: 1.5rem;
+    }
+
+    /* Footer */
+    .footer-content {
         text-align: center;
     }
 }
