@@ -157,6 +157,7 @@ header {
     width: 100%;
     max-width: 300px;
     border: 4px solid #007bff;
+    object-fit: cover; /* Ensures the image fills the space without distortion */
 }
 
 /* Skills, Projects, and Hobbies Sections */
