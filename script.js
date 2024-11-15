@@ -27,4 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    // Handle smooth fade-out effect and redirection to project page
+    const viewProjectBtn = document.getElementById('viewProjectBtn');
+    const body = document.body;
+
+    if (viewProjectBtn) {
+        viewProjectBtn.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent immediate link redirection
+
+            // Add fade-out effect to the body
+            body.classList.add('fade-out');
+
+            // Redirect after the fade-out effect completes (700ms delay to account for visibility change)
+            setTimeout(() => {
+                window.location.href = viewProjectBtn.href; // Redirect to project.html
+            }, 700); // Increased duration to ensure smooth transition
+        });
+    }
+
+    // Handle smooth fade-out effect and redirection to home page (viewHomeBtn)
+    const viewHomeBtn = document.getElementById('viewHomeBtn');
+    if (viewHomeBtn) {
+        viewHomeBtn.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent immediate link redirection
+
+            // Add fade-out effect to the body
+            body.classList.add('fade-out');
+
+            // Redirect after the fade-out effect completes (700ms delay to account for visibility change)
+            setTimeout(() => {
+                window.location.href = viewHomeBtn.href; // Redirect to index.html
+            }, 700); // Increased duration to ensure smooth transition
+        });
+    }
 });
