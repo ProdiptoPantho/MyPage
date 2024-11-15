@@ -159,7 +159,7 @@ header {
 }
 
 .about-image {
-    max-width: 300px; /* Make sure the image container doesn't exceed a max width */
+    max-width: 300px; 
     width: 100%;
     height: auto;
 }
@@ -168,10 +168,10 @@ header {
     width: 100%;
     height: auto;
     max-width: 100%;
-    object-fit: contain; /* Ensures the image fits within its container */
+    object-fit: contain; 
     border-radius: 50%;
     border: 4px solid #007bff;
-    max-height: 300px; /* Prevents the image from stretching beyond 300px height */
+    max-height: 300px; 
 }
 
 /* Skills, Projects, and Hobbies Sections */
@@ -263,7 +263,7 @@ header {
     margin-top: 1.5rem;
 }
 
-/* Responsive Adjustments for Mobile View */
+
 @media (max-width: 768px) {
     /* Navbar */
     .nav-links {
@@ -316,7 +316,7 @@ header {
     }
 }
 
-/* Adjustments for smaller screens (mobile devices) */
+
 @media (max-width: 480px) {
     /* Navbar */
     .nav-logo {

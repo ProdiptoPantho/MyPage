@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Get the target section
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
@@ -34,31 +33,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (viewProjectBtn) {
         viewProjectBtn.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent immediate link redirection
+            e.preventDefault(); 
 
-            // Add fade-out effect to the body
+            
             body.classList.add('fade-out');
 
-            // Redirect after the fade-out effect completes (700ms delay to account for visibility change)
+            
             setTimeout(() => {
-                window.location.href = viewProjectBtn.href; // Redirect to project.html
-            }, 700); // Increased duration to ensure smooth transition
+                window.location.href = viewProjectBtn.href; 
+            }, 700); 
         });
     }
 
-    // Handle smooth fade-out effect and redirection to home page (viewHomeBtn)
+    // Handle smooth fade-out effect and redirection to Home page
     const viewHomeBtn = document.getElementById('viewHomeBtn');
     if (viewHomeBtn) {
         viewHomeBtn.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent immediate link redirection
+            e.preventDefault();
 
-            // Add fade-out effect to the body
+            
             body.classList.add('fade-out');
 
-            // Redirect after the fade-out effect completes (700ms delay to account for visibility change)
             setTimeout(() => {
-                window.location.href = viewHomeBtn.href; // Redirect to index.html
-            }, 700); // Increased duration to ensure smooth transition
+                window.location.href = viewHomeBtn.href; 
+            }, 700);
         });
     }
 });
