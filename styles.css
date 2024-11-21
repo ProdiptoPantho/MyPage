@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 /* General Styles */
 *,
 *::before,
@@ -361,16 +363,15 @@ header {
     }
 }
 
-/* Quote Box Styles */
 .quote-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     padding: 2rem;
-}
-
-.quote-box {
+  }
+  
+  .quote-box {
     max-width: 600px;
     padding: 2rem;
     border: 2px solid #2d8baf;
@@ -379,31 +380,45 @@ header {
     color: #1a5f7a;
     text-align: center;
     font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
     margin: 0 auto;
-}
-
-.color-buttons {
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+  }
+  
+  .color-buttons {
     display: flex;
     gap: 0.5rem;
-}
-
-.color-btn {
+  }
+  
+  .color-btn {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
     border: none;
     cursor: pointer;
     transition: transform 0.2s;
-}
-
-.color-btn:hover {
+  }
+  
+  .color-btn:hover {
     transform: scale(1.1);
-}
-
-.color-btn:nth-child(1) { background-color: #2d8baf; }
-.color-btn:nth-child(2) { background-color: #af832d; }
-.color-btn:nth-child(3) { background-color: #5f2daf; }
-.color-btn:nth-child(4) { background-color: #af2d2d; }
+  }
+  
+  .color-btn:nth-child(1) { 
+    background-color: #2d8baf;
+    --font-family: 'Poppins', sans-serif;
+  }
+  .color-btn:nth-child(2) { 
+    background-color: #af832d;
+    --font-family: 'Roboto', sans-serif; 
+  }
+  .color-btn:nth-child(3) { 
+    background-color: #5f2daf;
+    --font-family: 'Montserrat', sans-serif;
+  }
+  .color-btn:nth-child(4) { 
+    background-color: #af2d2d;
+    --font-family: 'Open Sans', sans-serif;
+  }
 
 /* Weight Converter Styles */
 .converter-container {

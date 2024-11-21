@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             quoteBox.style.color = colors[0];
             quoteBox.style.backgroundColor = colors[1];
             quoteBox.style.borderColor = colors[2];
+            quoteBox.style.fontFamily = 'Poppins, sans-serif';
+            quoteBox.style.fontSize = '1.2rem';
         });
     });
 
@@ -80,71 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Text Magic
-    const textArea = document.getElementById('magic-text');
-    const clearBtn = document.getElementById('clear-btn');
-    const capitalizeBtn = document.getElementById('capitalize-btn');
-    const sortBtn = document.getElementById('sort-btn');
-    const reverseBtn = document.getElementById('reverse-btn');
-    const stripBtn = document.getElementById('strip-btn');
-    const numberBtn = document.getElementById('number-btn');
-    const shuffleBtn = document.getElementById('shuffle-btn');
-
-    let isUpperCase = false;
-
-    if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-            textArea.value = '';
-        });
-    }
-
-    if (capitalizeBtn) {
-        capitalizeBtn.addEventListener('click', () => {
-            textArea.value = isUpperCase ? textArea.value.toLowerCase() : textArea.value.toUpperCase();
-            isUpperCase = !isUpperCase;
-        });
-    }
-
-    if (sortBtn) {
-        sortBtn.addEventListener('click', () => {
-            const lines = textArea.value.split('\n');
-            textArea.value = lines.sort().join('\n');
-        });
-    }
-
-    if (reverseBtn) {
-        reverseBtn.addEventListener('click', () => {
-            const lines = textArea.value.split('\n');
-            textArea.value = lines.map(line => line.split('').reverse().join('')).join('\n');
-        });
-    }
-
-    if (stripBtn) {
-        stripBtn.addEventListener('click', () => {
-            const lines = textArea.value.split('\n');
-            textArea.value = lines.filter(line => line.trim()).map(line => line.trim()).join('\n');
-        });
-    }
-
-    if (numberBtn) {
-        numberBtn.addEventListener('click', () => {
-            const lines = textArea.value.split('\n');
-            textArea.value = lines.map((line, i) => `${i + 1}. ${line.replace(/^\d+\.\s*/, '')}`).join('\n');
-        });
-    }
-
-    if (shuffleBtn) {
-        shuffleBtn.addEventListener('click', () => {
-            const lines = textArea.value.split('\n');
-            for (let i = lines.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [lines[i], lines[j]] = [lines[j], lines[i]];
-            }
-            textArea.value = lines.join('\n');
-        });
-    }
-
-    // Your existing code
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
