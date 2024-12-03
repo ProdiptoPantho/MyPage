@@ -54,33 +54,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Number Analyzer
-    const numberInput = document.getElementById('number-input');
-    const analyzeBtn = document.getElementById('analyze-btn');
-    const maxResult = document.getElementById('max-result');
-    const minResult = document.getElementById('min-result');
-    const sumResult = document.getElementById('sum-result');
-    const avgResult = document.getElementById('avg-result');
-    const reverseResult = document.getElementById('reverse-result');
+// Number Analyzer
+const numberInput = document.getElementById('number-input');
+const maxResult = document.getElementById('max-result');
+const minResult = document.getElementById('min-result');
+const sumResult = document.getElementById('sum-result');
+const avgResult = document.getElementById('avg-result');
+const reverseResult = document.getElementById('reverse-result');
 
-    if (analyzeBtn) {
-        analyzeBtn.addEventListener('click', () => {
-            const numbers = numberInput.value.split(',')
-                .map(num => parseFloat(num.trim()))
-                .filter(num => !isNaN(num));
+numberInput.addEventListener('input', () => {
+    const inputData = numberInput.value.split(',').map(item => item.trim());
 
-            if (numbers.length === 0) {
-                alert('Please enter valid numbers separated by commas');
-                return;
-            }
-
-            maxResult.textContent = Math.max(...numbers);
-            minResult.textContent = Math.min(...numbers);
-            sumResult.textContent = numbers.reduce((a, b) => a + b, 0);
-            avgResult.textContent = (numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(6);
-            reverseResult.textContent = numbers.reverse().join(',');
-        });
+    if (inputData.length === 0 || inputData[0] === '') {
+        reverseResult.textContent = '';
+        maxResult.textContent = '';
+        minResult.textContent = '';
+        sumResult.textContent = '';
+        avgResult.textContent = '';
+        return;
     }
+
+    reverseResult.textContent = inputData.reverse().join(', ');
+
+    const numbers = inputData.map(item => parseFloat(item)).filter(num => !isNaN(num));
+
+    if (numbers.length > 0) {
+        maxResult.textContent = Math.max(...numbers);
+        minResult.textContent = Math.min(...numbers);
+        sumResult.textContent = numbers.reduce((a, b) => a + b, 0);
+        avgResult.textContent = (numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(6);
+    } else {
+        maxResult.textContent = 'Not applicable';
+        minResult.textContent = 'Not applicable';
+        sumResult.textContent = 'Not applicable';
+        avgResult.textContent = 'Not applicable';
+    }
+});
+    
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -127,3 +137,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+//Magic Text
+
+document.addEventListener('DOMContentLoaded', () => {
+    const textArea = document.getElementById('magic-text');
+
+    // Clear All
+    document.getElementById('clear-btn').addEventListener('click', () => {
+        textArea.value = '';
+    });
+
+    // Capitalize (Toggle)
+    let isCapitalized = false;
+    document.getElementById('capitalize-btn').addEventListener('click', () => {
+        textArea.value = isCapitalized
+            ? textArea.value.toLowerCase()
+            : textArea.value.toUpperCase();
+        isCapitalized = !isCapitalized;
+    });
+
+    // Sort
+    document.getElementById('sort-btn').addEventListener('click', () => {
+        textArea.value = textArea.value
+            .split('\n')
+            .filter(line => line.trim() !== '')
+            .sort((a, b) => a.localeCompare(b))
+            .join('\n');
+    });
+
+    // Reverse
+    document.getElementById('reverse-btn').addEventListener('click', () => {
+        textArea.value = textArea.value
+            .split('\n')
+            .filter(line => line.trim() !== '')
+            .reverse()
+            .join('\n');
+    });
+
+    // Strip Blank
+    document.getElementById('strip-btn').addEventListener('click', () => {
+        textArea.value = textArea.value
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => line !== '')
+            .join('\n');
+    });
+
+    // Add Numbers
+    document.getElementById('number-btn').addEventListener('click', () => {
+        textArea.value = textArea.value
+            .split('\n')
+            .filter(line => line.trim() !== '')
+            .map((line, index) => `${index + 1}. ${line}`)
+            .join('\n');
+    });
+
+    // Shuffle
+    document.getElementById('shuffle-btn').addEventListener('click', () => {
+        const lines = textArea.value
+            .split('\n')
+            .filter(line => line.trim() !== '');
+        for (let i = lines.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [lines[i], lines[j]] = [lines[j], lines[i]];
+        }
+        textArea.value = lines.join('\n');
+    });
+});
+
