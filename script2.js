@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (textArea.value.trim() === '') return; 
         textArea.value = textArea.value
             .split('\n') 
-            .map(line => line.trim())  
             .sort((a, b) => a.localeCompare(b)) 
             .join('\n'); 
     });
@@ -52,7 +51,6 @@ document.getElementById('reverse2-btn').addEventListener('click', () => {
         if (textArea.value.trim() === '') return; 
         textArea.value = textArea.value
             .split('\n') 
-            .map(line => line.trim()) 
             .map((line, index) => `${index + 1}. ${line}`) 
             .join('\n'); 
     });
@@ -62,7 +60,6 @@ document.getElementById('reverse2-btn').addEventListener('click', () => {
         if (textArea.value.trim() === '') return; 
         const lines = textArea.value
             .split('\n') 
-            .map(line => line.trim())
         for (let i = lines.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1)); 
             [lines[i], lines[j]] = [lines[j], lines[i]]; 
