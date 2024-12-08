@@ -76,14 +76,23 @@ numberInput.addEventListener('input', () => {
 
     reverseResult.textContent = inputData.reverse().join(', ');
 
-    const numbers = inputData.map(item => parseFloat(item)).filter(num => !isNaN(num));
+    // Regular expression to validate a valid number (including decimals and scientific notation)
+    const numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
+
+    // Convert the input data to numbers, filtering out invalid ones using the regex
+    const numbers = inputData
+        .map(item => item.trim()) // Trim extra spaces
+        .filter(item => numberRegex.test(item))
+        .map(item => parseFloat(item));
+
 
     if (numbers.length > 0) {
-        maxResult.textContent = Math.max(...numbers);
-        minResult.textContent = Math.min(...numbers);
-        sumResult.textContent = numbers.reduce((a, b) => a + b, 0);
-        avgResult.textContent = (numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(6);
+        maxResult.textContent = Math.max(...numbers); 
+        minResult.textContent = Math.min(...numbers); 
+        sumResult.textContent = numbers.reduce((a, b) => a + b, 0); 
+        avgResult.textContent = (numbers.reduce((a, b) => a + b, 0) / numbers.length).toFixed(2);
     } else {
+
         maxResult.textContent = 'Not applicable';
         minResult.textContent = 'Not applicable';
         sumResult.textContent = 'Not applicable';
